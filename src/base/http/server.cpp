@@ -125,6 +125,11 @@ void Server::incomingConnection(const qintptr socketDescriptor)
         return;
     }
 
+    if (!m_https) {
+        qWarning("This build of qBittorrent only accepts secure connections", 5);
+            return;
+    }
+
     try
     {
         if (m_https)
